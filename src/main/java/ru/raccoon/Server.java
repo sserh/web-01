@@ -85,6 +85,10 @@ public class Server {
                     handler.handle(request, out);
                 }
             }
+            System.out.println(request.getQueryParams());
+            System.out.println(request.getQueryParam("las"));
+            System.out.println(request.getQueryParam("last"));
+
         }
     }
 
