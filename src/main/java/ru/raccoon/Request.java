@@ -11,10 +11,12 @@ public class Request {
 
     private final String requestMethod;
     private final String requestPath;
+    private final List<NameValuePair> requestParams;
 
     public Request(String requestMethod, String requestPath) {
         this.requestMethod = requestMethod;
         this.requestPath = requestPath;
+        this.requestParams = URLEncodedUtils.parse(requestPath.substring(requestPath.indexOf('?') + 1), Charset.defaultCharset());
     }
 
     public String getRequestMethod() {
@@ -26,7 +28,7 @@ public class Request {
     }
 
     public List<NameValuePair> getQueryParams() {
-        return URLEncodedUtils.parse(requestPath.substring(requestPath.indexOf('?') + 1), Charset.defaultCharset());
+        return requestParams;
     }
 
     public String getQueryParam(String name) {
